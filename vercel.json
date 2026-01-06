@@ -1,13 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && pnpm build",
-  "outputDirectory": "frontend/dist",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
   "installCommand": "pnpm install",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/dist/$1"
-    }
-  ]
+  "framework": null
 }
