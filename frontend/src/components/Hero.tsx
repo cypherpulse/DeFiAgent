@@ -1,27 +1,49 @@
-import { useConnect, useAccount, useDisconnect } from 'wagmi';
-import { Zap, Bot, TrendingUp, Shield, Wallet, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { useConnect, useAccount, useDisconnect, useSwitchChain, useChainId } from 'wagmi';
+import { baseSepolia } from 'wagmi/chains';
+import { Zap, Bot, TrendingUp, Shield, Wallet, ChevronDown, AlertTriangle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-const ConnectButton = () => {
+export const ConnectButton = () => {
   const { connectors, connect, isPending } = useConnect();
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, chain } = useAccount();
   const { disconnect } = useDisconnect();
+  const { switchChain, isPending: isSwitching } = useSwitchChain();
   const [showMenu, setShowMenu] = useState(false);
+
+  const isOnCorrectNetwork = chain?.id === baseSepolia.id;
 
   if (isConnected && address) {
     return (
       <div className="relative">
         <button
           onClick={() => setShowMenu(!showMenu)}
-          className="btn-primary text-lg px-8 py-4 flex items-center gap-2"
+          className={`text-lg px-8 py-4 flex items-center gap-2 ${
+            isOnCorrectNetwork ? 'btn-primary' : 'btn-secondary'
+          }`}
         >
-          <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+          <div className={`w-2 h-2 rounded-full animate-pulse ${
+            isOnCorrectNetwork ? 'bg-success' : 'bg-warning'
+          }`} />
           {address.slice(0, 6)}...{address.slice(-4)}
+          {!isOnCorrectNetwork && <AlertTriangle className="w-4 h-4 text-warning" />}
           <ChevronDown className="w-4 h-4" />
         </button>
-        
+
         {showMenu && (
           <div className="absolute top-full mt-2 right-0 w-48 card-elevated p-2 z-50">
+            {!isOnCorrectNetwork && (
+              <button
+                onClick={() => {
+                  switchChain({ chainId: baseSepolia.id });
+                  setShowMenu(false);
+                }}
+                disabled={isSwitching}
+                className="w-full text-left px-4 py-2 rounded-lg hover:bg-secondary text-warning font-medium transition-colors flex items-center gap-2"
+              >
+                <AlertTriangle className="w-4 h-4" />
+                Switch to Base Sepolia
+              </button>
+            )}
             <button
               onClick={() => {
                 disconnect();
@@ -63,6 +85,40 @@ const ConnectButton = () => {
               <span className="font-medium">{connector.name}</span>
             </button>
           ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const NetworkStatus = () => {
+  const { isConnected, chain } = useAccount();
+  const { switchChain, isPending: isSwitching } = useSwitchChain();
+
+  if (!isConnected) return null;
+
+  const isOnCorrectNetwork = chain?.id === baseSepolia.id;
+
+  return (
+    <div className="mb-6 animate-fade-in">
+      {isOnCorrectNetwork ? (
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/20">
+          <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+          <span className="text-sm font-medium text-success">Connected to Base Sepolia</span>
+        </div>
+      ) : (
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warning/10 border border-warning/20">
+          <AlertTriangle className="w-4 h-4 text-warning" />
+          <span className="text-sm font-medium text-warning">
+            Wrong network: {chain?.name || 'Unknown'}
+          </span>
+          <button
+            onClick={() => switchChain({ chainId: baseSepolia.id })}
+            disabled={isSwitching}
+            className="ml-2 px-3 py-1 text-xs bg-warning text-warning-foreground rounded-md hover:bg-warning/80 transition-colors disabled:opacity-50"
+          >
+            {isSwitching ? 'Switching...' : 'Switch'}
+          </button>
         </div>
       )}
     </div>
