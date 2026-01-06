@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+frontend/dist/
+solidityContract/out/
+solidityContract/cache/
+
+# Development files
+.env.local
+.env.development
+
+# Git and version control
+.git/
+.gitignore
+
+# Documentation (keep README)
+*.md
+!README.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Testing
+coverage/
+*.log
+
+# Foundry specific
+solidityContract/broadcast/
+solidityContract/cache/
