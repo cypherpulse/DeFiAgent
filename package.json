@@ -1,0 +1,26 @@
+{
+  "name": "defiagent-monorepo",
+  "version": "1.0.0",
+  "description": "DeFiAgent - Autonomous DeFi + AI Vault on Base",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "solidityContract"
+  ],
+  "scripts": {
+    "dev": "cd frontend && pnpm dev",
+    "build": "cd frontend && pnpm build",
+    "test": "cd solidityContract && forge test",
+    "deploy:contract": "cd solidityContract && ./deploy.sh"
+  },
+  "keywords": [
+    "defi",
+    "blockchain",
+    "base",
+    "ai",
+    "vault",
+    "yield-farming"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
