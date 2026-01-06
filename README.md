@@ -8,6 +8,8 @@
 
 ![DeFiAgent](assets/defiAgent.png)
 
+🌐 **[Live Demo](https://defiagent.vercel.app/)** | 📋 [Contract on Base Sepolia](https://sepolia.basescan.org/address/0x409e9222f69b11f84bc9e54794061315e27f5f64)
+
 ## Table of Contents
 
 - [Overview](#overview)
