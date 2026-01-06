@@ -4,7 +4,6 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "pnpm install",
   "framework": null,
-  "functions": {},
   "rewrites": [
     {
       "source": "/(.*)",
