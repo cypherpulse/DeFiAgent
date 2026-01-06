@@ -369,17 +369,47 @@ forge script script/DeployDeFiAgent.s.sol --rpc-url https://mainnet.base.org --b
 ### Frontend Deployment
 
 #### Vercel (Recommended)
+The project is configured for Vercel deployment with the frontend in a subfolder. The `vercel.json` configuration handles the build process automatically.
+
+**Option 1: Deploy from Root Directory (Recommended)**
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy to production
+vercel --prod
+
+# Or link your GitHub repo for automatic deployments
+vercel link
+```
+
+**Option 2: Deploy from Frontend Directory**
 ```bash
 cd frontend
-pnpm install -g vercel
 vercel --prod
+```
+
+**Vercel Configuration Details:**
+- **Build Command**: `cd frontend && pnpm build`
+- **Output Directory**: `frontend/dist`
+- **Node Version**: 18.x or higher
+- **Framework Preset**: Vite
+
+**Environment Variables for Vercel:**
+```
+VITE_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
+VITE_BASE_SEPOLIA_RPC_URL=https://sepolia.base.org
+VITE_BASE_MAINNET_RPC_URL=https://mainnet.base.org
 ```
 
 #### Netlify
 ```bash
 cd frontend
 pnpm run build
-# Upload dist/ folder to Netlify
+# Upload the dist/ folder to Netlify
+# Or use Netlify CLI
+npm install -g netlify-cli
+netlify deploy --prod --dir=dist
 ```
 
 ## 🧪 Testing
