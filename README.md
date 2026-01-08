@@ -1,4 +1,4 @@
-# DeFiAgent — Autonomous DeFi + AI Vault on Base
+# DeFiAgent Autonomous DeFi + AI Vault on Base
 
 [![Solidity](https://img.shields.io/badge/Solidity-^0.8.24-blue)](https://soliditylang.org/)
 [![Foundry](https://img.shields.io/badge/Foundry-Enabled-orange)](https://book.getfoundry.sh/)
