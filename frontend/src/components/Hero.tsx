@@ -127,7 +127,7 @@ export const NetworkStatus = () => {
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden py-12 md:py-20">
+    <section className="relative overflow-hidden py-12 md:py-20 lg:py-24">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -143,35 +143,35 @@ const Hero = () => {
           </div>
 
           {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 tracking-tight animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight animate-fade-in leading-tight">
             DeFiAgent:{' '}
-            <span className="gradient-text">Autonomous Yield</span>
-            <br />
-            Harvesting on Base
+            <span className="gradient-text block sm:inline">Autonomous Yield</span>
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>Harvesting on Base
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-in">
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-fade-in leading-relaxed">
             Deposit funds → Grant AI agents → Watch them compound yield with{' '}
             <span className="font-semibold text-primary">0.75% performance fee</span>
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in">
+          {/* CTA - Hidden on mobile since it's in navbar */}
+          <div className="hidden sm:flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in">
             <ConnectButton />
           </div>
 
           {/* Feature pills */}
-          <div className="flex flex-wrap justify-center gap-3 animate-fade-in">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 animate-fade-in">
+            <div className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-secondary border border-border">
               <Shield className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-foreground">Non-custodial</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border">
+            <div className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-secondary border border-border">
               <TrendingUp className="w-4 h-4 text-success" />
               <span className="text-sm font-medium text-foreground">Auto-compound</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border">
+            <div className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-secondary border border-border">
               <Bot className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-foreground">AI-powered</span>
             </div>
