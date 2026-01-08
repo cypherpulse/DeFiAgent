@@ -89,31 +89,31 @@ DeFiAgent/
 graph TB
     subgraph "User Layer"
         A[Web Browser]
-        B[Wallet (MetaMask, etc.)]
+        B["Wallet (MetaMask, etc.)"]
     end
-    
+
     subgraph "Frontend Layer"
-        C[React App]
-        D[Vite Build Tool]
-        E[Wagmi/Viem Web3]
+        C["React App"]
+        D["Vite Build Tool"]
+        E["Wagmi/Viem Web3"]
     end
-    
+
     subgraph "Blockchain Layer"
-        F[Base Network]
-        G[DeFiAgent Contract]
+        F["Base Network"]
+        G["DeFiAgent Contract"]
     end
-    
+
     subgraph "DeFi Ecosystem"
         H[Aerodrome]
         I[Moonwell]
-        J[Other Protocols]
+        J["Other Protocols"]
     end
-    
+
     subgraph "AI Layer"
-        K[AI Agent Service]
-        L[Yield Optimization AI]
+        K["AI Agent Service"]
+        L["Yield Optimization AI"]
     end
-    
+
     A --> B
     B --> C
     C --> E
